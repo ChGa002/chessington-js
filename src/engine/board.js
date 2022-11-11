@@ -43,4 +43,28 @@ export default class Board {
             this.currentPlayer = (this.currentPlayer === Player.WHITE ? Player.BLACK : Player.WHITE);
         }
     }
+
+    isOnTheBoard(square)
+    {
+        return (square.row >= 0 && square.row < GameSettings.BOARD_SIZE && square.col >= 0 && square.col < GameSettings.BOARD_SIZE);
+    }
+
+    isFreeOrCapturable(square)
+    {
+        let squareOccupant = this.getPiece(square);
+
+        if (squareOccupant === undefined)
+        {
+            return true;
+        }
+        return squareOccupant.player !== this.currentPlayer;
+    }
+
+    isCapturable(square)
+    {
+        let squareOccupant = this.getPiece(square);
+
+        return squareOccupant !== undefined && this.getPiece(square).player !== this.currentPlayer;
+    }
+
 }
