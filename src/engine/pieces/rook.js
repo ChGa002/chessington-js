@@ -25,6 +25,8 @@ export default class Rook extends Piece {
 
             while(board.isOnTheBoard(potentialMove) && board.isFreeOrCapturable(potentialMove)){
                 moves.push(potentialMove);
+                if (board.isCapturable(potentialMove)) break;
+
                 i += direction
                 potentialMove = Square.at(location.row, location.col + i);
             }
@@ -44,6 +46,8 @@ export default class Rook extends Piece {
 
             while(board.isOnTheBoard(potentialMove) && board.isFreeOrCapturable(potentialMove)){
                 moves.push(potentialMove);
+                if (board.isCapturable(potentialMove)) break;
+
                 i += direction
                 potentialMove = Square.at(location.row + i, location.col);
             }
