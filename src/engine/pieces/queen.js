@@ -6,6 +6,9 @@ export default class Queen extends Piece {
     }
 
     getAvailableMoves(board) {
-        return new Array(0);
+        const location = board.findPiece(this);
+        return [...new Set([
+            ...this.getAllDiagonalMoves(board, location),
+            ...this.getAllStraightMoves(board, location)])]
     }
 }
